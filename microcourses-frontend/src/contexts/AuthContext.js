@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       // Fetch fresh user data from backend
-      axios.get('http://localhost:5000/api/auth/me')
+      axios.get('https://micro-courses-aoit.onrender.com/api/auth/me')
         .then(response => {
           setUser(response.data);
           localStorage.setItem('user', JSON.stringify(response.data));
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://micro-courses-aoit.onrender.com/api/auth/login', {
         email,
         password
       });
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, role = 'Learner') => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('https://micro-courses-aoit.onrender.com/api/auth/register', {
         name,
         email,
         password,
