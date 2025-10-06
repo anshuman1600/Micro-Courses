@@ -22,8 +22,8 @@ const CourseDetail = () => {
     try {
       setLoading(true);
       const [courseResponse, lessonsResponse] = await Promise.all([
-        axios.get(`http://localhost:5000/api/courses/${id}`),
-        axios.get(`http://localhost:5000/api/courses/${id}/lessons`)
+        axios.get(`https://micro-courses-aoit.onrender.com/api/courses/${id}`),
+        axios.get(`https://micro-courses-aoit.onrender.com/api/courses/${id}/lessons`)
       ]);
       
       setCourse(courseResponse.data);
@@ -38,7 +38,7 @@ const CourseDetail = () => {
 
   const checkEnrollmentStatus = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/learner/progress');
+      const response = await axios.get('https://micro-courses-aoit.onrender.com/api/learner/progress');
       const enrollment = response.data.find(e => e.course._id === id);
       if (enrollment) {
         setEnrolled(true);
@@ -52,7 +52,7 @@ const CourseDetail = () => {
 
   const handleEnroll = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/learner/courses/${id}/enroll`);
+      await axios.post(`https://micro-courses-aoit.onrender.com/api/learner/courses/${id}/enroll`);
       setEnrolled(true);
       alert('Successfully enrolled in course!');
     } catch (err) {
@@ -67,7 +67,7 @@ const CourseDetail = () => {
   const handleGenerateTranscript = async (lessonId) => {
     setTranscriptLoading(true);
     try {
-      const response = await axios.post(`http://localhost:5000/api/transcripts/${lessonId}/generate`);
+      const response = await axios.post(`https://micro-courses-aoit.onrender.com/api/transcripts/${lessonId}/generate`);
       setTranscripts(prev => ({ ...prev, [lessonId]: response.data.transcript }));
       alert('Transcript generated successfully');
     } catch (err) {

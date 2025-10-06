@@ -14,7 +14,7 @@ const AdminReview = () => {
   const fetchPendingCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/admin/review/courses');
+      const response = await axios.get('https://micro-courses-aoit.onrender.com/api/admin/review/courses');
       setCourses(response.data);
     } catch (err) {
       setError('Failed to load courses for review');
@@ -26,7 +26,7 @@ const AdminReview = () => {
 
   const handleStatusUpdate = async (courseId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/admin/courses/${courseId}/status`, { status });
+      await axios.put(`https://micro-courses-aoit.onrender.com/api/admin/courses/${courseId}/status`, { status });
       fetchPendingCourses();
       alert(`Course ${status.toLowerCase()} successfully!`);
     } catch (err) {

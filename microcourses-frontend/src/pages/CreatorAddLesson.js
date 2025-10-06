@@ -35,7 +35,7 @@ const CreatorAddLesson = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/courses/${courseId}/lessons`, {
+      const response = await axios.post(`https://micro-courses-aoit.onrender.com/api/courses/${courseId}/lessons`, {
         title: lesson.title,
         description: lesson.description,
         videoUrl: lesson.videoUrl,
@@ -57,7 +57,7 @@ const CreatorAddLesson = () => {
     }
     setTranscriptLoading(true);
     try {
-      const response = await axios.post(`http://localhost:5000/api/transcripts/${lesson.id}/generate`);
+      const response = await axios.post(`https://micro-courses-aoit.onrender.com/api/transcripts/${lesson.id}/generate`);
       setLesson({ ...lesson, transcript: response.data.transcript });
       alert('Transcript generated successfully');
     } catch (err) {

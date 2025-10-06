@@ -21,7 +21,7 @@ const Courses = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/learner/courses');
+      const response = await axios.get('https://micro-courses-aoit.onrender.com/api/learner/courses');
       setCourses(response.data);
     } catch (err) {
       setError('Failed to load courses');
@@ -33,7 +33,7 @@ const Courses = () => {
 
 const handleEnroll = async (courseId) => {
     try {
-      await axios.post(`http://localhost:5000/api/learner/courses/${courseId}/enroll`);
+      await axios.post(`https://micro-courses-aoit.onrender.com/api/learner/courses/${courseId}/enroll`);
       alert('Enrolled successfully!');
       // Optionally refresh courses or user progress here
     } catch (err) {

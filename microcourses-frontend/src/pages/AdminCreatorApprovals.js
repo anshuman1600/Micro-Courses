@@ -13,7 +13,7 @@ const AdminCreatorApprovals = () => {
   const fetchPendingCreators = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/admin/creators/pending');
+      const response = await axios.get('https://micro-courses-aoit.onrender.com/api/admin/creators/pending');
       setPendingCreators(response.data);
     } catch (err) {
       setError('Failed to load pending creator applications');
@@ -24,7 +24,7 @@ const AdminCreatorApprovals = () => {
 
   const handleStatusChange = async (userId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/admin/creators/${userId}/status`, { status });
+      await axios.put(`https://micro-courses-aoit.onrender.com/api/admin/creators/${userId}/status`, { status });
       fetchPendingCreators();
       alert(`Creator application ${status.toLowerCase()}`);
     } catch (err) {
