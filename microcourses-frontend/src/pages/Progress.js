@@ -15,7 +15,7 @@ const Progress = () => {
   const fetchProgress = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/learner/progress');
+const response = await axios.get('https://micro-courses-aoit.onrender.com/api/learner/progress');
       setEnrollments(response.data);
     } catch (err) {
       setError('Failed to load progress');
@@ -27,7 +27,7 @@ const Progress = () => {
 
   const getCertificate = async (courseId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/learner/courses/${courseId}/certificate`);
+      const response = await axios.get(`https://micro-courses-aoit.onrender.com/api/learner/courses/${courseId}/certificate`);
       alert(`Certificate issued! Hash: ${response.data.certificateHash}`);
     } catch (err) {
       alert(err.response?.data?.msg || 'Failed to get certificate');

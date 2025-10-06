@@ -41,7 +41,7 @@ const CreatorDashboard = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/courses/creator');
+      const response = await axios.get('https://micro-courses-aoit.onrender.com/api/courses/creator');
       setCourses(response.data);
     } catch (err) {
       setError('Failed to load courses');
@@ -54,7 +54,7 @@ const CreatorDashboard = () => {
   const handleCreateCourse = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/courses', newCourse);
+      await axios.post('https://micro-courses-aoit.onrender.com/api/courses', newCourse);
       setNewCourse({ title: '', description: '', price: 0, thumbnail: '' });
       setShowCreateForm(false);
       fetchCourses();
@@ -67,7 +67,7 @@ const CreatorDashboard = () => {
   const handleDeleteCourse = async (courseId) => {
     if (window.confirm('Are you sure you want to delete this course?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/courses/${courseId}`);
+        await axios.delete(`https://micro-courses-aoit.onrender.com/api/courses/${courseId}`);
         fetchCourses();
         alert('Course deleted successfully!');
       } catch (err) {
@@ -78,7 +78,7 @@ const CreatorDashboard = () => {
 
   const handleStatusChange = async (courseId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/courses/${courseId}`, { status });
+      await axios.put(`https://micro-courses-aoit.onrender.com/api/courses/${courseId}`, { status });
       fetchCourses();
       alert(`Course status updated to ${status}`);
     } catch (err) {

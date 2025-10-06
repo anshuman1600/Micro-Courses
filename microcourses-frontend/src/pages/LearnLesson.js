@@ -31,18 +31,18 @@ const LearnLesson = () => {
     try {
       setLoading(true);
       // Fetch lesson details from backend
-      const lessonResponse = await axios.get(`http://localhost:5000/api/courses/${courseId}/lessons/${lessonId}`);
+      const lessonResponse = await axios.get(`https://micro-courses-aoit.onrender.com/api/courses/${courseId}/lessons/${lessonId}`);
       console.log('Lesson data:', lessonResponse.data);
       console.log('Original videoUrl:', lessonResponse.data.videoUrl);
       console.log('Formatted videoUrl:', formatYouTubeUrl(lessonResponse.data.videoUrl));
       setLesson(lessonResponse.data);
 
       // Fetch course details
-      const courseResponse = await axios.get(`http://localhost:5000/api/courses/${lessonResponse.data.course}`);
+      const courseResponse = await axios.get(`https://micro-courses-aoit.onrender.com/api/courses/${lessonResponse.data.course}`);
       setCourse(courseResponse.data);
 
       // Check if lesson is completed by user
-      const enrollmentResponse = await axios.get(`http://localhost:5000/api/learner/progress`);
+      const enrollmentResponse = await axios.get(`https://micro-courses-aoit.onrender.com/api/learner/progress`);
       const enrollment = enrollmentResponse.data.find(e => e.course._id === lessonResponse.data.course);
       if (enrollment && enrollment.completedLessons.includes(lessonId)) {
         setCompleted(true);
@@ -59,7 +59,7 @@ const LearnLesson = () => {
 
   const markAsComplete = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/learner/courses/${lesson.course}/lessons/${lesson._id}/complete`);
+      await axios.put(`https://micro-courses-aoit.onrender.com/api/learner/courses/${lesson.course}/lessons/${lesson._id}/complete`);
       setCompleted(true);
       alert('Lesson marked as complete!');
     } catch (err) {

@@ -1,4 +1,4 @@
-const http = require('http');
+const https = require('https');
 
 async function testAdminLogin() {
   return new Promise((resolve, reject) => {
@@ -8,8 +8,8 @@ async function testAdminLogin() {
     });
 
     const options = {
-      hostname: 'localhost',
-      port: 5000,
+      hostname: 'micro-courses-aoit.onrender.com',
+      port: 443,
       path: '/api/auth/login',
       method: 'POST',
       headers: {
@@ -18,7 +18,7 @@ async function testAdminLogin() {
       }
     };
 
-    const req = http.request(options, (res) => {
+    const req = https.request(options, (res) => {
       let data = '';
 
       res.on('data', (chunk) => {
@@ -52,8 +52,8 @@ async function testAdminLogin() {
 
 function testAdminRoutes(token) {
   const options = {
-    hostname: 'localhost',
-    port: 5000,
+    hostname: 'micro-courses-aoit.onrender.com',
+    port: 443,
     path: '/api/admin/review/courses',
     method: 'GET',
     headers: {
@@ -61,7 +61,7 @@ function testAdminRoutes(token) {
     }
   };
 
-  const req = http.request(options, (res) => {
+  const req = https.request(options, (res) => {
     let data = '';
 
     res.on('data', (chunk) => {

@@ -26,7 +26,7 @@ const CreatorApply = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch('http://localhost:5000/api/auth/creator-apply', {
+      const response = await fetch('/api/auth/creator-apply', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const CreatorApply = () => {
       } else {
         // Refresh user data to update creatorApplicationStatus
         try {
-          const userResponse = await axios.get('http://localhost:5000/api/auth/me');
+          const userResponse = await axios.get('https://micro-courses-aoit.onrender.com//api/auth/me');
           localStorage.setItem('user', JSON.stringify(userResponse.data));
           // Update the user state in AuthContext
           window.location.reload(); // Simple way to refresh the app state
